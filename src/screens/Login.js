@@ -31,7 +31,6 @@ const Login = ({ navigation }) => {
         })
       );
     } catch (error) {
-      console.log(error);
       switch (error.path) {
         case "email":
           setErrorEmail(error.message);

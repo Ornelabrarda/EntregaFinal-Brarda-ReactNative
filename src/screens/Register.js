@@ -14,7 +14,7 @@ const Register = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-  const [errorConfirmPassword, setErrorConfirmPasword] = useState("");
+  const [errorConfirmPassword, setErrorConfirmPassword] = useState("");
   const [triggerRegister, { data, isSuccess }] = useRegisterMutation();
   const dispatch = useDispatch();
 
@@ -34,17 +34,17 @@ const Register = ({ navigation }) => {
         case "email":
           setErrorEmail(error.message);
           setErrorPassword("");
-          setErrorConfirmPasword("");
+          setErrorConfirmPassword("");
           break;
         case "password":
           setErrorEmail("");
           setErrorPassword(error.message);
-          setErrorConfirmPasword("");
+          setErrorConfirmPassword("");
           break;
         case "confirmPassword":
           setErrorEmail("");
           setErrorPassword("");
-          setErrorConfirmPasword(error.message);
+          setErrorConfirmPassword(error.message);
           break;
       }
     }

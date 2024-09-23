@@ -13,7 +13,7 @@ export const ItemDetail = ({ route }) => {
   const dispatch = useDispatch();
 
   const handleAddItemCart = () => {
-    dispatch(addItemCart({ ...product[id], quantity: 1 }));
+    dispatch(addItemCart({ ...product, quantity: 1 }));
     navigation.navigate("CartStack");
   };
 

@@ -14,8 +14,8 @@ export const MyProfile = ({ navigation }) => {
     <View style={styles.container}>
       <Image
         source={
-          user.image
-            ? { uri: user.image }
+          user?.image
+            ? { uri: user?.image }
             : require("../../assets/people_14024731.png")
         }
         resizeMode="cover"

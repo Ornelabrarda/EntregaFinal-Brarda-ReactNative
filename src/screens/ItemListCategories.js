@@ -14,7 +14,6 @@ export const ItemListCategories = ({ route }) => {
     isError,
     error,
   } = useGetProductsQuery(category);
-
   const [productsFiltered, setProductsFiltered] = useState([]);
 
   useEffect(() => {

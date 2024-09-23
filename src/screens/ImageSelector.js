@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { colors } from "../global/colors";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePatchImageProfileMutation } from "../services/shop";
 import { useSelector } from "react-redux";
 

@@ -1,13 +1,14 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-
 import { CartItem } from "../components/CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { usePostOrderMutation } from "../services/shop";
 import { colors } from "../global/colors";
 import { clearCart } from "../features/cart/CartSlice";
+import { EmptyCart } from "../components/EmptyCart";
 
 export const Cart = ({ navigation }) => {
   const cart = useSelector((state) => state.cart);
+  const localId = useSelector((state) => state.auth.localId);
   const [triggerPostOrder] = usePostOrderMutation();
   const dispatch = useDispatch();
 
@@ -17,10 +18,12 @@ export const Cart = ({ navigation }) => {
       ...cart,
       createdAt,
     };
-    triggerPostOrder({ userId: "1", order: cart });
+    triggerPostOrder({ localId, order });
     dispatch(clearCart());
     navigation.navigate("OrderStack");
   };
+
+  if (cart.total === 0) return <EmptyCart />;
 
   return (
     <View style={styles.container}>

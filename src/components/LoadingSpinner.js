@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 import { colors } from "../global/colors";
 
 export const LoadingSpinner = () => {

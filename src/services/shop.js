@@ -13,15 +13,17 @@ export const shopApi = createApi({
       query: (category) =>
         `/products.json?orderBy="category"&equalTo="${category}"`,
       transformResponse: (response) => {
+        if (!response) return [];
         const data = Object.values(response);
         return data;
       },
     }),
+
     getProduct: builder.query({
       query: (id) => `/products/${id}.json`,
     }),
     getOrdersByUser: builder.query({
-      query: (userId) => `/orders/${userId}.json`,
+      query: (localId) => `/orders/${localId}.json`,
       transformResponse: (response) => {
         const data = Object.entries(response).map((item) => ({
           id: item[0],
@@ -29,15 +31,18 @@ export const shopApi = createApi({
         }));
         return data;
       },
+      providesTags: ["order"],
     }),
+
     postOrder: builder.mutation({
-      query: ({ userId, order }) => ({
-        url: `/orders/${userId}.json`,
+      query: ({ localId, order }) => ({
+        url: `/orders/${localId}.json`,
         method: "POST",
         body: order,
       }),
       invalidatesTags: ["order"],
     }),
+
     patchImageProfile: builder.mutation({
       query: ({ image, localId }) => ({
         url: `users/${localId}.json`,
@@ -49,6 +54,10 @@ export const shopApi = createApi({
 
     getUser: builder.query({
       query: ({ localId }) => `users/${localId}.json`,
+      transformResponse: (response) => {
+        if (!response) return { image: "" };
+      },
+
       providesTags: ["userImage"],
     }),
   }),

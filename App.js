@@ -9,14 +9,8 @@ import { Provider } from "react-redux";
 import { init } from "./src/db/index.js";
 
 export default function App() {
-  (async () => {
-    try {
-      const response = await init();
-      console.log("base de datos funcionando");
-    } catch (error) {
-      console.log(error);
-    }
-  })();
+  init();
+
   const [fontLoaded] = useFonts(fonts);
 
   if (!fontLoaded) {

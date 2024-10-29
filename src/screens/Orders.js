@@ -1,20 +1,24 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { OrderItem } from "../components/OrderItem";
-import { useGetOrdersByUserQuery } from "../services/shop";
+import {
+  useGetOrderByUserQuery,
+  useGetOrdersByUserQuery,
+} from "../services/shop";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
 import { EmptyOrder } from "../components/EmptyOrder.js";
 
 export const Orders = () => {
   const localId = useSelector((state) => state.auth.localId);
+
   const { data: orders, isLoading } = useGetOrdersByUserQuery(localId);
 
   if (isLoading) return <LoadingSpinner />;
 
-  if (orders === 0) return <EmptyOrder />;
+  if (!orders || orders.length === 0) return <EmptyOrder />;
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={orders}
         keyExtractor={(item) => item.id}

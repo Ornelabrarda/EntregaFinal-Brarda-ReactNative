@@ -25,6 +25,7 @@ export const shopApi = createApi({
     getOrdersByUser: builder.query({
       query: (localId) => `/orders/${localId}.json`,
       transformResponse: (response) => {
+        if (!response) return [];
         const data = Object.entries(response).map((item) => ({
           id: item[0],
           ...item[1],
@@ -32,6 +33,10 @@ export const shopApi = createApi({
         return data;
       },
       providesTags: ["order"],
+    }),
+
+    getOrderByUser: builder.query({
+      query: ({ localId, orderId }) => `/orders/${localId}/${orderId}.json`,
     }),
 
     postOrder: builder.mutation({
@@ -69,6 +74,7 @@ export const {
   useGetProductQuery,
   usePostOrderMutation,
   useGetOrdersByUserQuery,
+  useGetOrderByUserQuery,
   usePatchImageProfileMutation,
   useGetUserQuery,
 } = shopApi;

@@ -48,11 +48,19 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: colors.blue,
-    borderWidth: 3,
+
     borderRadius: 5,
     padding: 10,
     gap: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   title: {
     textAlign: "center",
@@ -60,7 +68,7 @@ const styles = StyleSheet.create({
     fontFamily: "NunitoSansRegular",
   },
   titleMin: {
-    fontSize: 14,
+    fontSize: 12,
   },
   titleMax: {
     fontSize: 20,

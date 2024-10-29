@@ -32,23 +32,39 @@ export const Cart = ({ navigation }) => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <CartItem item={item} />}
       />
+      <Text style={styles.text}>Total:${cart.total}</Text>
       <Pressable onPress={handleAddOrder} style={styles.button}>
-        <Text>Confirmar</Text>
+        <Text style={styles.buttonText}>Confirmar</Text>
       </Pressable>
-      <Text>Total:${cart.total}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
+    height: "auto",
     alignItems: "center",
     justifyContent: "center",
-    gap: 30,
+    backgroundColor: "white",
+    gap: 20,
   },
   button: {
-    borderColor: colors.ligthBlue,
-    borderWidth: 3,
-    width: "60%",
+    width: "75%",
+    height: 35,
+    backgroundColor: colors.blue,
+    borderRadius: 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    fontFamily: "NunitoSansRegular",
+    fontSize: 20,
+    color: "white",
+  },
+  text: {
+    fontFamily: "NunitoSansRegular",
+    fontSize: 20,
+    color: colors.blue,
   },
 });

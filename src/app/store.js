@@ -4,11 +4,13 @@ import { shopApi } from "../services/shop.js";
 import cartReducer from "../features/cart/CartSlice.js";
 import { authApi } from "../services/auth.js";
 import authReducer from "../features/auth/AuthSlice.js";
+import counterReducer from "../features/counter/CounterSlice.js";
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
     auth: authReducer,
+    counter: counterReducer,
     [authApi.reducerPath]: authApi.reducer,
     [shopApi.reducerPath]: shopApi.reducer,
   },

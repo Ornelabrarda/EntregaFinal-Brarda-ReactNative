@@ -60,7 +60,7 @@ export const shopApi = createApi({
     getUser: builder.query({
       query: ({ localId }) => `users/${localId}.json`,
       transformResponse: (response) => {
-        if (!response) return { image: "" };
+        return response ? response : { image: "" };
       },
 
       providesTags: ["userImage"],

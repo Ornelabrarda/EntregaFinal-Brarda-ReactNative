@@ -1,9 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { OrderItem } from "../components/OrderItem";
-import {
-  useGetOrderByUserQuery,
-  useGetOrdersByUserQuery,
-} from "../services/shop";
+import { useGetOrdersByUserQuery } from "../services/shop";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { useSelector } from "react-redux";
 import { EmptyOrder } from "../components/EmptyOrder.js";
@@ -18,7 +15,7 @@ export const Orders = () => {
   if (!orders || orders.length === 0) return <EmptyOrder />;
 
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={orders}
         keyExtractor={(item) => item.id}
